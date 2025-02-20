@@ -1,6 +1,6 @@
 <?php
         interface IConexion{
-          public function  connect($host,$db_name,$user,$password);
+          public function  connect();
           public function closeConnexion();
 
         }

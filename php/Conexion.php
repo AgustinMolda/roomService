@@ -1,19 +1,19 @@
 <?php
     class Conexion implements IConexion{
-        public function  __construct(
-            private string $host,
-            private string $db_name,
-            private string $user,
-            private string $password
-        ){
-            conenect($host,$db_name,$user,$password);
+        const HOST= "localhost";
+        const DBNAME= "roomService";
+        const USER= "root";
+        const PASSWORD="";
+        private $pdo;
+        
+        
+        public function connect():object{
+            $this->pdo= new PDO("mysql:".self::HOST."dbname=".self::DBNAME,self::USER,self::PASSWORD);
+            return this->pdo;
         }
 
-        public function  connect($host,$db_name,$user,$password){
-            $pdo= new PDO("mysql:host=$host,dbname=$db_name,user=$user,password=$password");
+        public function closeConnexion():void{
+            $pdo=null;
         }
 
-        public function closeConnexion(){
-            $pdo = null;
-        }
     }
